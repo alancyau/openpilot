@@ -35,6 +35,7 @@ class CAR:
   HIGHLANDER_TSS2 = "TOYOTA HIGHLANDER 2020"
   HIGHLANDERH = "TOYOTA HIGHLANDER HYBRID 2018"
   HIGHLANDERH_TSS2 = "TOYOTA HIGHLANDER HYBRID 2020"
+  MIRAI = "TOYOTA MIRAI 2021"
   AVALON = "TOYOTA AVALON 2016"
   RAV4_TSS2 = "TOYOTA RAV4 2019"
   COROLLA_TSS2 = "TOYOTA COROLLA TSS2 2019"
@@ -860,6 +861,20 @@ FW_VERSIONS = {
       b'\x028646F4803000\x00\x00\x00\x008646G5301200\x00\x00\x00\x00',
     ],
   },
+  CAR.MIRAI: {
+    (Ecu.esp, 0x7d1, None): [
+      b'\xf1\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\x84\020\000\000\000\000\000\000\000\000\000\000\000\000\000\000',
+    ],
+    (Ecu.eps, 0x7a1, None): [
+      b'\0028965B6204100\000\000\000\0008965B6203100\000\000\000\000',
+    ]  
+    (Ecu.fwdRadar, 0x750, 0xf): [
+      b'\0018821F6201200\000\000\000\000',
+    ],
+    (Ecu.fwdCamera, 0x750, 0x6d): [
+      b'\0028646F6201400\000\000\000\0008646G5301200\000\000\000\000',
+    ],
+  },
   CAR.LEXUS_IS: {
     (Ecu.engine, 0x700, None): [
       b'\x018966353M7100\x00\x00\x00\x00',
@@ -1485,6 +1500,7 @@ DBC = {
   CAR.HIGHLANDER_TSS2: dbc_dict('toyota_nodsu_pt_generated', 'toyota_tss2_adas'),
   CAR.HIGHLANDERH: dbc_dict('toyota_highlander_hybrid_2018_pt_generated', 'toyota_adas'),
   CAR.HIGHLANDERH_TSS2: dbc_dict('toyota_nodsu_hybrid_pt_generated', 'toyota_tss2_adas'),
+  CAR.MIRAI: dbc_dict('toyota_mirai_2021_pt_generated', 'toyota_adas'),
   CAR.AVALON: dbc_dict('toyota_avalon_2017_pt_generated', 'toyota_adas'),
   CAR.RAV4_TSS2: dbc_dict('toyota_nodsu_pt_generated', 'toyota_tss2_adas'),
   CAR.COROLLA_TSS2: dbc_dict('toyota_nodsu_pt_generated', 'toyota_tss2_adas'),
@@ -1504,7 +1520,7 @@ DBC = {
 
 # Toyota/Lexus Safety Sense 2.0 and 2.5
 TSS2_CAR = set([CAR.RAV4_TSS2, CAR.COROLLA_TSS2, CAR.COROLLAH_TSS2, CAR.LEXUS_ES_TSS2, CAR.LEXUS_ESH_TSS2, CAR.RAV4H_TSS2,
-                CAR.LEXUS_RX_TSS2, CAR.LEXUS_RXH_TSS2, CAR.HIGHLANDER_TSS2, CAR.HIGHLANDERH_TSS2, CAR.PRIUS_TSS2, CAR.CAMRY_TSS2, CAR.CAMRYH_TSS2])
+                CAR.LEXUS_RX_TSS2, CAR.LEXUS_RXH_TSS2, CAR.HIGHLANDER_TSS2, CAR.HIGHLANDERH_TSS2, CAR.PRIUS_TSS2, CAR.CAMRY_TSS2, CAR.CAMRYH_TSS2, CAR.MIRAI])
 
 NO_DSU_CAR = TSS2_CAR | set([CAR.CHR, CAR.CHRH, CAR.CAMRY, CAR.CAMRYH])
 
